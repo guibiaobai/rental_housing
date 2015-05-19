@@ -1,0 +1,176 @@
+<html>
+
+<script type="text/javascript" src="jquery.js" >
+
+</script>
+
+
+
+
+<script>
+
+
+$(document).ready(function(){
+  $("#button5").click(function(){
+    $.post("transcationAction.php",{'typetwo':3},function(data,status){
+      //alert("数据：" + data + "\n状态：" + status);
+
+         var obj2 = eval('(' + data + ')');
+
+          for(var i=0;i<obj2.length;i++)
+          {
+                $("#p1").append("房间:");
+		$("#p1").append(obj2[i]);
+		$("#p1").append("<br>");
+
+           }
+
+    });
+  });
+
+  //
+  
+  });
+
+
+$(document).ready(function(){
+  $("#button6").click(function(){
+    $.get("transcationAction.php","",function(data,status){
+	
+	//$("#p1").remove();
+	$("#p1").text(" ");
+	
+      });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function(){
+
+  $("#button").click(function(){
+    $.post("transcationAction.php",{'typetwo':4},function(data,status){
+      //alert("数据：" + data + "\n状态：" + status);
+	  
+	  
+	 var obj2 = eval('(' + data + ')');
+	  
+	 // var obj2=data;
+	  //$("p").remove()
+	  
+	  $("#body").append("<p id='p0'></p>");
+	  
+	  for(var i=0;i<obj2.length;i++)
+	  {
+	    for(var k=0;k<obj2[i].length;k++)
+		{
+		//document.write(obj2[i][k]);
+		//document.write("<br>");
+		if(k==0){
+		$("#p0").append("房间:");
+		$("#p0").append(obj2[i][k]);
+		$("#p0").append("<br>");
+		}
+		
+		if(k==1){
+		$("#p0").append("目前时间:");
+		$("#p0").append(obj2[i][k]);
+		$("#p0").append("<br>");
+		}
+		
+		if(k==2)
+		{
+		
+		$("#p0").append("到期时间:");
+		$("#p0").append(obj2[i][k]);
+		$("#p0").append("<br>");
+		
+		}
+		if(k==3)
+		{
+		$("#p0").append("剩余天数:");
+		$("#p0").append(obj2[i][k]);
+		$("#p0").append("<br>");
+		
+		}
+		
+		}
+	  
+	  }
+	 
+    });
+  });
+
+  //
+  
+  });
+
+
+$(document).ready(function(){
+  $("#button2").click(function(){
+    $.get("transcationAction.php","",function(data,status){
+	
+	//$("#p0").remove();
+	$("#p0").text(" ");
+	
+      });
+  });
+});
+
+
+
+</script>
+
+
+
+
+<head></head>
+
+<body>
+
+<div style="position:absolute;top:200px;left:500px;width:200px;height:400px;background-color:#ffeeee;">
+<a href="addroom.html">增加房间</a><br>
+
+<br>
+<br>
+<a href="adduser.html">添加租客</a><br>
+<br>
+<br>
+<a href="transcation.php">添加交易</a><br>
+</div>
+
+
+
+<div id="body" style="position:absolute;top:200px;left:900px;width:200px;height:400px;background-color:#ffeeee;">
+房间出租情况<br>
+<input type="button" name="button" id="button" value="提交";>
+<input type="button" name="button" id="button2" value="清除";>
+
+</div>
+
+<div id="body2" style="position:absolute;top:200px;left:200px;width:200px;height:400px;background-color:#ffeeee;">
+房间空置<br>
+<input type="button" name="button" id="button5" value="提交";>
+<input type="button" name="button" id="button6" value="清除";>
+
+<p id="p1"></p>
+
+</div>
+
+
+
+
+
+</body>
+<html>
